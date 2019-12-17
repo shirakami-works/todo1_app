@@ -1,0 +1,25 @@
+<h1>今日やること</h1>
+<table>
+  <thead>
+    <tr>
+      <th>やること</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  <% @todos.each do |todo| %>
+    <tr>
+      <td><%= todo.title %></td>
+      <td><%= link_to '編集', edit_todo_path(todo) %></td>
+      <td><%= link_to '削除', "/todos/#{todo.id}", method: :delete%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h2></h2>
+<%= form_with model: @todo do |f| %>
+  <div><%= f.label :title %></div>
+  <div><%= f.text_field :title %></div>
+  <div><%= f.submit %></div>
+<% end %>
